@@ -7,11 +7,14 @@
 </p>
 
 <p align="center">
-    让 AI 团队像真实研发团队一样协作：需求 → 开发 → 测试 → 交付，全程自动流转。
+    让 AI 团队像真实研发团队一样协作：<strong>需求 → 开发 → 测试 → 交付</strong>，全程自动流转。
 </p>
 
 ## 是什么
 OpenClaw 是一套基于多智能体（Multi-Agent）的软件开发协作框架。它将传统研发团队的角色抽象为独立 Agent，每个 Agent 拥有明确的职责、流转规则和沟通规范，通过标准化的 Workspace 文件驱动整个开发流程自动运转。
+
+# OpenClaw接入文档
+- [OpenClaw 多 Agent 配置指南](docs/openclaw.config.docs.md)
 
 ## 团队成员
 | Agent    | 角色 | 核心职责 |
