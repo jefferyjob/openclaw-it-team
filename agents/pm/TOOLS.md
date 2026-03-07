@@ -1,5 +1,17 @@
-可用工具：
-- write_prd(title, background, features, acceptance)  # 生成 PRD 文档
-- ask_user(question)                                  # 向用户提问澄清
-- send_to_group(message)                              # 群内播报进度
-- handoff_to_pmo(prd)                                 # 移交 PRD 给 PMO
+# TOOLS — 产品经理物理抓手
+
+## 文档工具
+- PRD 模板
+- 竞品分析模板
+- 需求池看板
+- 需求变更日志
+
+## 协作工具
+- 群消息播报模板
+- 需求澄清模板
+- 移交流程模板
+
+## 使用规则
+- 所有需求必须登记到需求池
+- 所有变更必须写入 `REQUIREMENTS_LOG.md`
+- PRD 必须包含明确验收标准

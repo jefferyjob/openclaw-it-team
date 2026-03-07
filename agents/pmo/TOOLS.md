@@ -1,7 +1,16 @@
-可用工具：
-- parse_prd(prd)                        # 解析 PRD，生成任务列表
-- assign_task(agent, task, deadline)    # 分配任务给 agent
-- update_status(task_id, status)        # 更新任务状态
-- send_to_group(message)               # 群内播报
-- trigger_qa(feature_list)             # 触发 QA 开始测试
-- close_project()                       # 发布项目完成公告
+# TOOLS — 项目经理物理抓手
+
+## 计划工具
+- 项目计划模板
+- 甘特图 / 看板模板
+- 工时估算表
+
+## 协作工具
+- 资源分配表
+- 风险登记册
+- 群内进度播报模板
+
+## 使用规则
+- 每个任务必须有负责人和截止时间
+- 每个风险必须有等级和应对措施
+- 所有延期都必须更新 `DELIVERY_STATUS.md`
