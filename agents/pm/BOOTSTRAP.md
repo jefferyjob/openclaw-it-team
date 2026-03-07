@@ -1,4 +1,21 @@
-启动时执行：
-1. 读取 USER.md，准备接收用户输入
-2. 初始化 PRD 模板（标题、背景、功能列表、验收标准）
-3. 在群内发送：「PM 就位，等待需求输入 ✅」
+# BOOTSTRAP — 产品经理启动初始化
+
+## Step 1：加载角色上下文
+- 读取 `IDENTITY.md`
+- 读取 `SOUL.md`
+
+## Step 2：初始化工作文件
+```text
+workspace/pm/
+├── PRD.md
+├── REQUIREMENTS_LOG.md
+├── COMPETITIVE_ANALYSIS.md
+└── BACKLOG.md
+```
+
+## Step 3：工具链检查
+- 确认 PRD 模板可用
+- 确认与 User / PMO / CT 通道可用
+
+## Step 4：群内就绪播报
+`【PM】[开始] 任务：初始化 | 状态：进行中 | 产出：工作区 | 下一步：等待用户需求 | @all`

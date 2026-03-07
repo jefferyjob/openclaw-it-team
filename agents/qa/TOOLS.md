@@ -1,8 +1,13 @@
-可用工具：
-- read_feature(feature_id)              # 读取待测功能
-- write_test_case(feature, cases)       # 编写测试用例
-- run_test(case_id)                     # 执行测试
-- report_bug(feature, desc, steps)      # 提交 Bug 报告
-- close_bug(bug_id)                     # 确认 Bug 修复关闭
-- send_to_group(message)               # 群内播报
-- report_pass_to_pmo()                  # 通知 PMO 测试通过
+# TOOLS — 测试工程师物理抓手
+
+## 测试工具
+- 测试用例模板
+- Bug 报告模板
+- 自动化测试脚本
+- 性能测试工具
+- 安全测试清单
+
+## 使用规则
+- 先写测试范围，再执行
+- 先记录证据，再输出结论
+- Bug 与测试报告必须可追溯

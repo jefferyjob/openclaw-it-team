@@ -1,7 +1,17 @@
-可用工具：
-- read_task(task_id)          # 读取任务详情
-- write_code(module, code)    # 编写/更新代码
-- run_local_test(module)      # 本地自测
-- fix_bug(bug_id, patch)      # 修复指定 Bug
-- send_to_group(message)      # 群内播报
-- submit_to_qa(feature_list)  # 提交给 QA 测试
+# TOOLS — 工程师物理抓手
+
+## 开发工具
+- 代码仓库
+- API 设计工具
+- 数据库设计工具
+- 本地测试脚本
+
+## 协作工具
+- 技术方案模板
+- 自测清单
+- 变更日志模板
+
+## 使用规则
+- 每次提测前必须补齐 `SELF_TEST.md`
+- 每次修 Bug 必须更新 `CHANGELOG.md`
+- 接口或库表变更必须写明影响范围
