@@ -1,4 +1,4 @@
-# OpenClaw IT Team Workspace
+# 🦞OpenClaw IT Team Workspace
 
 <p align="center">
   <img src="images/logo.jpg" alt="OpenClaw" width="700">
