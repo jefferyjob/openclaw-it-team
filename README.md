@@ -11,6 +11,70 @@
 ## 项目简介
 🦞OpenClaw IT Team 是一套面向软件研发场景的多智能体协作配置。这套配置的目标不是“让 Agent 并排回答问题”，而是让它们像真实团队一样按职责流转、相互交接、在群内持续同步进度。
 
+## ✨ 快速体验
+
+### 方式一：让龙虾帮你部署（推荐给 OpenClaw 用户）
+如果你正在使用 OpenClaw，直接把下面这句话发给你的龙虾：
+```text
+请按照这个 SKILL.md 帮我完成 openclaw-it-team 的部署：
+https://github.com/jefferyjob/openclaw-it-team/blob/main/SKILL.md
+```
+
+**⚠️ 特别注意：**
+- 如果你不是 **OpenClaw** 用户，建议直接使用 **方式二** 进行部署，步骤更简单。
+- 完成部署后，需要**手动修改 `openclaw.json` 配置文件**，填入你自己的 **飞书 `AppId` 和 `AppSecret`** 才能正常使用。
+- 同时请记得为 **飞书 Bot** 配置对应的 **应用权限**，否则机器人可能无法正常工作。
+
+
+### 方式二：手动部署
+#### 1. 克隆仓库
+```bash
+git clone https://github.com/jefferyjob/openclaw-it-team.git
+cd openclaw-it-team
+```
+
+#### 2. 查看最终方案
+- 全团队流程
+- 统一群内播报协议
+- 各个 Agent 的完整 Workspace 定义
+- 异常处理规则
+
+#### 3. 查看各角色实际配置
+
+```text
+agents/
+├── pm/
+├── rd/
+├── qa/
+└── ce/
+```
+
+例如：
+
+- [`agents/pm/IDENTITY.md`](agents/pm/IDENTITY.md)
+- [`agents/pm/AGENTS.md`](agents/pm/AGENTS.md)
+- [`agents/rd/MEMORY.md`](agents/rd/MEMORY.md)
+- [`agents/qa/SOUL.md`](agents/qa/SOUL.md)
+- [`agents/ce/USER.md`](agents/ce/USER.md)
+
+### 快速体验：从 PM 启动一次完整流转
+
+典型起点是由用户向 `pm` 提需求，例如：
+
+```text
+我需要一个用户登录功能，支持手机号验证码登录。
+```
+
+之后的标准流转是：
+
+```text
+PM -> 输出 PRD 和计划
+RD -> 开发并提测
+QA -> 测试并反馈
+PM -> 结项并同步用户
+CE -> 全程氛围协同
+```
+
 ## 核心特点
 - 单一负责人：`PM` 统一负责需求和项目推进，减少角色切换成本。
 - 流程闭环：标准流程固定为 `PM -> RD -> QA`，测试不通过则回到 RD 修复，由 PM 推动闭环。
@@ -94,70 +158,6 @@ CE 在各阶段主动发言，处理鼓励、安抚和庆祝场景。
 - 任务结束或移交时必须播报
 - 阻塞和延期必须抄送 `pm`
 - 用户焦虑或团队高压场景应抄送 `ce`
-
-## ✨ 快速体验
-
-### 方式一：让龙虾帮你部署（推荐给 OpenClaw 用户）
-如果你正在使用 OpenClaw，直接把下面这句话发给你的龙虾：
-```text
-请按照这个 SKILL.md 帮我完成 openclaw-it-team 的部署：
-https://github.com/jefferyjob/openclaw-it-team/blob/main/SKILL.md
-```
-
-**⚠️ 特别注意：**
-- 如果你不是 **OpenClaw** 用户，建议直接使用 **方式二** 进行部署，步骤更简单。
-- 完成部署后，需要**手动修改 `openclaw.json` 配置文件**，填入你自己的 **飞书 `AppId` 和 `AppSecret`** 才能正常使用。
-- 同时请记得为 **飞书 Bot** 配置对应的 **应用权限**，否则机器人可能无法正常工作。
-
-
-### 方式二：手动部署
-#### 1. 克隆仓库
-```bash
-git clone https://github.com/jefferyjob/openclaw-it-team.git
-cd openclaw-it-team
-```
-
-#### 2. 查看最终方案
-- 全团队流程
-- 统一群内播报协议
-- 各个 Agent 的完整 Workspace 定义
-- 异常处理规则
-
-#### 3. 查看各角色实际配置
-
-```text
-agents/
-├── pm/
-├── rd/
-├── qa/
-└── ce/
-```
-
-例如：
-
-- [`agents/pm/IDENTITY.md`](agents/pm/IDENTITY.md)
-- [`agents/pm/AGENTS.md`](agents/pm/AGENTS.md)
-- [`agents/rd/MEMORY.md`](agents/rd/MEMORY.md)
-- [`agents/qa/SOUL.md`](agents/qa/SOUL.md)
-- [`agents/ce/USER.md`](agents/ce/USER.md)
-
-### 快速体验：从 PM 启动一次完整流转
-
-典型起点是由用户向 `pm` 提需求，例如：
-
-```text
-我需要一个用户登录功能，支持手机号验证码登录。
-```
-
-之后的标准流转是：
-
-```text
-PM -> 输出 PRD 和计划
-RD -> 开发并提测
-QA -> 测试并反馈
-PM -> 结项并同步用户
-CE -> 全程氛围协同
-```
 
 ## License
 MIT License
