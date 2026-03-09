@@ -135,18 +135,20 @@
       "id": "pm",                              // Agent 唯一标识符（必填）
       "agentDir": "/root/.openclaw/agents/pm/agent",  // Workspace 目录路径（必填）
       "identity": {
-        "name": "产品经理",                      // Agent 显示名称
+        "name": "项目经理",                      // Agent 显示名称
         "emoji": "📋"                            // Agent 表情头像
       },
       "groupChat": {
         "mentionPatterns": [                     // 群聊中触发该 Agent 的关键词
+          "@项目经理",
+          "项目经理",
           "@产品经理",
           "产品经理",
           "pm"
         ]
       },
       "subagents": {
-        "allowAgents": ["pmo"]                 // 该 Agent 可以调用哪些子 Agent
+        "allowAgents": ["rd", "qa", "ce"]  // 该 Agent 可以调用哪些子 Agent
       }
     }
   ]
@@ -158,7 +160,7 @@
 | 字段 | 必填 | 说明                                   |
 |--|--|--------------------------------------|
 | `id` | ✅ | 全局唯一标识，用于绑定、路由、相互调用                  |
-| `agentDir` | ✅ | 指向该 Agent 的 Workspace 目录（含 7 个标准文件）  |
+| `agentDir` | ✅ | 指向该 Agent 的 Workspace 目录（含 8 个标准文件）  |
 | `name` | ❌ | Agent 名称，可覆盖 IDENTITY.md 中的名称        |
 | `workspace` | ❌ | 覆盖默认工作目录，适合让不同 Agent 操作不同文件空间        |
 | `identity.name` | ❌ | 群聊中显示的名字                             |
@@ -172,23 +174,21 @@
 通过 `subagents.allowAgents` 控制调用权限，形成有向图：
 
 ```
-pm  → 可调用 → pmo
-pmo → 可调用 → coder
+pm    → 可调用 → rd / qa / ce
+rd → 可调用 → pm
+qa    → 可调用 → rd / pm
 ```
 
 对应配置：
 ```json
 // pm agent
-"subagents": { "allowAgents": ["pmo"] }
+"subagents": { "allowAgents": ["rd", "qa", "ce"] }
 
-// pmo agent
-"subagents": { "allowAgents": ["coder"] }
-
-// coder agent
-"subagents": { "allowAgents": ["qa"] }
+// rd agent
+"subagents": { "allowAgents": ["pm"] }
 
 // qa agent
-"subagents": { "allowAgents": ["coder", "pmo"] }
+"subagents": { "allowAgents": ["rd", "pm"] }
 ```
 
 > ⚠️ 权限是单向的。A 可以调用 B，不代表 B 可以调用 A，需双向配置。
@@ -230,7 +230,7 @@ pmo → 可调用 → coder
     "appId": "cli_agent1_appid",
     "appSecret": "agent1_secret"
   },
-  "feishu-bot-coder": {
+  "feishu-bot-rd": {
     "appId": "cli_agent2_appid",
     "appSecret": "agent2_secret"
   }
@@ -253,10 +253,10 @@ pmo → 可调用 → coder
     }
   },
   {
-    "agentId": "coder",
+    "agentId": "rd",
     "match": {
       "channel": "feishu",
-      "accountId": "feishu-bot-coder"
+      "accountId": "feishu-bot-rd"
     }
   }
 ]
@@ -266,8 +266,8 @@ pmo → 可调用 → coder
 
 ```
 飞书群消息
-  ├── 发给 feishu-bot-pm → 路由到 pm Agent（产品经理）
-  └── 发给 feishu-bot-coder   → 路由到 coder Agent（工程师）
+  ├── 发给 feishu-bot-pm → 路由到 pm Agent（项目经理）
+  └── 发给 feishu-bot-rd   → 路由到 rd Agent（工程师）
 ```
 
 
@@ -281,7 +281,7 @@ pmo → 可调用 → coder
   "profile": "full",              // 工具集：full=全部工具, minimal=基础工具
   "agentToAgent": {
     "enabled": true,              // 开启 Agent 之间相互通信
-    "allow": ["pm", "pmo", "coder", "qa", "ct"]    // 允许参与 A2A 通信的 Agent 白名单
+    "allow": ["pm", "rd", "qa", "ce"]    // 允许参与 A2A 通信的 Agent 白名单
   },
   "sessions": {
     "visibility": "all"           // 会话可见范围：all=所有 Agent 共享会话视图
@@ -343,7 +343,7 @@ pmo → 可调用 → coder
 
 ## 8. 完整多 Agent 配置示例
 
-以下是本项目 IT 团队（PM / PMO / Coder / QA / CT）的完整配置模板：
+以下是本项目 IT 团队（PM / RD / QA / CE）的完整配置模板：
 
 ```json
 {
@@ -380,30 +380,21 @@ pmo → 可调用 → coder
       {
         "id": "pm",
         "agentDir": "/root/.openclaw/agents/pm/agent",
-        "identity": { "name": "产品经理", "emoji": "🧩" },
+        "identity": { "name": "项目经理", "emoji": "🧩" },
         "groupChat": {
-          "mentionPatterns": ["@产品经理", "产品经理", "pm"]
+          "mentionPatterns": ["@项目经理", "项目经理", "@产品经理", "产品经理", "pm"]
         },
-        "subagents": { "allowAgents": ["pmo"] }
+        "subagents": { "allowAgents": ["rd", "qa", "ce"] }
       },
       {
-        "id": "pmo",
-        "agentDir": "/root/.openclaw/agents/pmo/agent",
-        "identity": { "name": "项目经理", "emoji": "📅" },
-        "groupChat": {
-          "mentionPatterns": ["@项目经理", "项目经理", "pmo"]
-        },
-        "subagents": { "allowAgents": ["pm", "coder", "qa"] }
-      },
-      {
-        "id": "coder",
-        "workspace": "/root/.openclaw/workspace-coder",
-        "agentDir": "/root/.openclaw/agents/coder/agent",
+        "id": "rd",
+        "workspace": "/root/.openclaw/workspace-rd",
+        "agentDir": "/root/.openclaw/agents/rd/agent",
         "identity": { "name": "工程师", "emoji": "💻" },
         "groupChat": {
-          "mentionPatterns": ["@工程师", "工程师", "coder", "码农"]
+          "mentionPatterns": ["@工程师", "工程师", "rd", "码农"]
         },
-        "subagents": { "allowAgents": ["pmo"] }
+        "subagents": { "allowAgents": ["pm"] }
       },
       {
         "id": "qa",
@@ -412,16 +403,16 @@ pmo → 可调用 → coder
         "groupChat": {
           "mentionPatterns": ["@测试", "测试工程师", "qa"]
         },
-        "subagents": { "allowAgents": ["pmo", "coder"] }
+        "subagents": { "allowAgents": ["pm", "rd"] }
       },
       {
-        "id": "ct",
-        "agentDir": "/root/.openclaw/agents/ct/agent",
+        "id": "ce",
+        "agentDir": "/root/.openclaw/agents/ce/agent",
         "identity": { "name": "小美", "emoji": "🌸" },
         "groupChat": {
-          "mentionPatterns": ["@小美", "小美", "ct", "鼓励师"]
+          "mentionPatterns": ["@小美", "小美", "ce", "鼓励师"]
         },
-        "subagents": { "allowAgents": ["pm", "pmo", "coder", "qa"] }
+        "subagents": { "allowAgents": ["pm", "rd", "qa"] }
       }
     ]
   },
@@ -430,19 +421,19 @@ pmo → 可调用 → coder
     "profile": "full",
     "agentToAgent": {
       "enabled": true,
-      "allow": ["pm", "pmo", "coder", "qa", "ct"]
+      "allow": ["pm", "rd", "qa", "ce"]
     },
     "sessions": { "visibility": "all" }
   },
 
   "bindings": [
     {
-      "agentId": "pmo",
-      "match": { "channel": "feishu", "accountId": "feishu-bot-default" }
+      "agentId": "pm",
+      "match": { "channel": "feishu", "accountId": "feishu-bot-pm" }
     },
     {
-      "agentId": "coder",
-      "match": { "channel": "feishu", "accountId": "feishu-bot-coder" }
+      "agentId": "rd",
+      "match": { "channel": "feishu", "accountId": "feishu-bot-rd" }
     }
   ],
 
@@ -470,9 +461,9 @@ pmo → 可调用 → coder
 
 **Q：`maxPingPongTurns` 设多少合适？**
 
-一般设 `5~10`。数值太小会导致 Agent 任务未完成就中断；太大可能陷入无意义的来回对话消耗 token。对于明确单向流转（如 PM→PMO）的场景，`5` 已足够。
+一般设 `5~10`。数值太小会导致 Agent 任务未完成就中断；太大可能陷入无意义的来回对话消耗 token。对于明确单向流转（如 PM→RD）的场景，`5` 已足够。
 
 **Q：`requireMention: false` 和 `requireMention: true` 的区别？**
 
-- `false`：群里所有消息 Agent 都会处理，适合 CT（鼓励师）这类需要主动感知氛围的 Agent
-- `true`：只有 @ 该 Bot 时才处理，适合 Coder、QA 等按需调用的 Agent
+- `false`：群里所有消息 Agent 都会处理，适合 CE（鼓励师）这类需要主动感知氛围的 Agent
+- `true`：只有 @ 该 Bot 时才处理，适合 RD、QA 等按需调用的 Agent

@@ -6,7 +6,7 @@
 
 ## Step 2：初始化工作文件
 ```text
-workspace/ct/
+workspace/ce/
 ├── ENCOURAGE_LIBRARY.md
 ├── CARE_CALENDAR.md
 └── MOOD_LOG.md

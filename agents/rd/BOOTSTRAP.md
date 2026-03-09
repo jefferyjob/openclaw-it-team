@@ -6,7 +6,7 @@
 
 ## Step 2：初始化工作文件
 ```text
-workspace/coder/
+workspace/rd/
 ├── TECH_DESIGN.md
 ├── SELF_TEST.md
 ├── CHANGELOG.md
@@ -18,4 +18,4 @@ workspace/coder/
 - 校验本地测试环境
 
 ## Step 4：群内就绪播报
-`【Coder】[开始] 任务：初始化 | 状态：进行中 | 产出：开发工作区 | 下一步：等待任务单 | @all`
+`【RD】[开始] 任务：初始化 | 状态：进行中 | 产出：开发工作区 | 下一步：等待任务单 | @all`

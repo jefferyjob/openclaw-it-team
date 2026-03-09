@@ -52,42 +52,26 @@
         "id": "pm",
         "agentDir": "/root/.openclaw/agents/pm/agent",
         "identity": {
-          "name": "产品经理",
+          "name": "项目经理",
           "emoji": "🧩"
         },
         "groupChat": {
           "mentionPatterns": [
+            "@项目经理",
+            "项目经理",
             "@产品经理",
             "产品经理",
             "pm"
           ]
         },
         "subagents": {
-          "allowAgents": ["pmo"]
+          "allowAgents": ["rd", "qa", "ce"]
         }
       },
       {
-        "id": "pmo",
-        "agentDir": "/root/.openclaw/agents/pmo/agent",
-        "identity": {
-          "name": "项目经理",
-          "emoji": "📅"
-        },
-        "groupChat": {
-          "mentionPatterns": [
-            "@项目经理",
-            "项目经理",
-            "pmo"
-          ]
-        },
-        "subagents": {
-          "allowAgents": ["pm", "coder", "qa"]
-        }
-      },
-      {
-        "id": "coder",
-        "workspace": "/root/.openclaw/workspace-coder",
-        "agentDir": "/root/.openclaw/agents/coder/agent",
+        "id": "rd",
+        "workspace": "/root/.openclaw/workspace-rd",
+        "agentDir": "/root/.openclaw/agents/rd/agent",
         "identity": {
           "name": "工程师",
           "emoji": "💻"
@@ -96,12 +80,12 @@
           "mentionPatterns": [
             "@工程师",
             "工程师",
-            "coder",
+            "rd",
             "码农"
           ]
         },
         "subagents": {
-          "allowAgents": ["pmo"]
+          "allowAgents": ["pm"]
         }
       },
       {
@@ -119,12 +103,12 @@
           ]
         },
         "subagents": {
-          "allowAgents": ["pmo", "coder"]
+          "allowAgents": ["pm", "rd"]
         }
       },
       {
-        "id": "ct",
-        "agentDir": "/root/.openclaw/agents/ct/agent",
+        "id": "ce",
+        "agentDir": "/root/.openclaw/agents/ce/agent",
         "identity": {
           "name": "小美",
           "emoji": "🌸"
@@ -133,12 +117,12 @@
           "mentionPatterns": [
             "@小美",
             "小美",
-            "ct",
+            "ce",
             "鼓励师"
           ]
         },
         "subagents": {
-          "allowAgents": ["pm", "pmo", "coder", "qa"]
+          "allowAgents": ["pm", "rd", "qa"]
         }
       }
     ]
@@ -147,7 +131,7 @@
     "profile": "full",
     "agentToAgent": {
       "enabled": true,
-      "allow": ["pm", "pmo", "coder", "qa", "ct"]
+      "allow": ["pm", "rd", "qa", "ce"]
     },
     "sessions": {
       "visibility": "all"
@@ -162,17 +146,10 @@
       }
     },
     {
-      "agentId": "pmo",
+      "agentId": "rd",
       "match": {
         "channel": "feishu",
-        "accountId": "feishu-bot-pmo"
-      }
-    },
-    {
-      "agentId": "coder",
-      "match": {
-        "channel": "feishu",
-        "accountId": "feishu-bot-coder"
+        "accountId": "feishu-bot-rd"
       }
     },
     {
@@ -183,10 +160,10 @@
       }
     },
     {
-      "agentId": "ct",
+      "agentId": "ce",
       "match": {
         "channel": "feishu",
-        "accountId": "feishu-bot-ct"
+        "accountId": "feishu-bot-ce"
       }
     }
   ],
@@ -223,25 +200,10 @@
             }
           }
         },
-        "feishu-bot-pmo": {
+        "feishu-bot-rd": {
           "enabled": true,
-          "appId": "YOUR_PMO_APP_ID",
-          "appSecret": "YOUR_PMO_APP_SECRET",
-          "connectionMode": "websocket",
-          "domain": "feishu",
-          "groupPolicy": "open",
-          "allowBots": "mentions",
-          "groups": {
-            "*": {
-              "requireMention": true,
-              "allowBots": true
-            }
-          }
-        },
-        "feishu-bot-coder": {
-          "enabled": true,
-          "appId": "YOUR_CODER_APP_ID",
-          "appSecret": "YOUR_CODER_APP_SECRET",
+          "appId": "YOUR_RD_APP_ID",
+          "appSecret": "YOUR_RD_APP_SECRET",
           "connectionMode": "websocket",
           "domain": "feishu",
           "groupPolicy": "open",
@@ -268,7 +230,7 @@
             }
           }
         },
-        "feishu-bot-ct": {
+        "feishu-bot-ce": {
           "enabled": true,
           "appId": "YOUR_CT_APP_ID",
           "appSecret": "YOUR_CT_APP_SECRET",
