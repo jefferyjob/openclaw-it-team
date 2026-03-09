@@ -95,6 +95,12 @@ CE 在各阶段主动发言，处理鼓励、安抚和庆祝场景。
 https://github.com/jefferyjob/openclaw-it-team/blob/main/SKILL.md
 ```
 
+**⚠️ 特别注意：**
+- 如果你不是 **OpenClaw** 用户，建议直接使用 **方式二** 进行部署，步骤更简单。
+- 完成部署后，需要**手动修改 `openclaw.json` 配置文件**，填入你自己的 **飞书 `AppId` 和 `AppSecret`** 才能正常使用。
+- 同时请记得为 **飞书 Bot** 配置对应的 **应用权限**，否则机器人可能无法正常工作。
+
+
 ### 方式二：手动部署
 #### 1. 克隆仓库
 ```bash
