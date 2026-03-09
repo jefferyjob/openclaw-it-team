@@ -50,7 +50,8 @@
     "list": [
       {
         "id": "pm",
-        "agentDir": "/root/.openclaw/agents/pm/agent",
+        "workspace": "/root/.openclaw/workspace-pm",
+        "agentDir": "/root/.openclaw/workspace-pm",
         "identity": {
           "name": "项目经理",
           "emoji": "🧩"
@@ -71,7 +72,7 @@
       {
         "id": "rd",
         "workspace": "/root/.openclaw/workspace-rd",
-        "agentDir": "/root/.openclaw/agents/rd/agent",
+        "agentDir": "/root/.openclaw/workspace-rd",
         "identity": {
           "name": "工程师",
           "emoji": "💻"
@@ -90,7 +91,8 @@
       },
       {
         "id": "qa",
-        "agentDir": "/root/.openclaw/agents/qa/agent",
+        "workspace": "/root/.openclaw/workspace-qa",
+        "agentDir": "/root/.openclaw/workspace-qa",
         "identity": {
           "name": "测试工程师",
           "emoji": "🔍"
@@ -108,7 +110,8 @@
       },
       {
         "id": "ce",
-        "agentDir": "/root/.openclaw/agents/ce/agent",
+        "workspace": "/root/.openclaw/workspace-ce",
+        "agentDir": "/root/.openclaw/workspace-ce",
         "identity": {
           "name": "小美",
           "emoji": "🌸"
@@ -232,8 +235,8 @@
         },
         "feishu-bot-ce": {
           "enabled": true,
-          "appId": "YOUR_CT_APP_ID",
-          "appSecret": "YOUR_CT_APP_SECRET",
+          "appId": "YOUR_CE_APP_ID",
+          "appSecret": "YOUR_CE_APP_SECRET",
           "connectionMode": "websocket",
           "domain": "feishu",
           "groupPolicy": "open",

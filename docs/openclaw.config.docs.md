@@ -133,7 +133,8 @@
   "list": [
     {
       "id": "pm",                              // Agent 唯一标识符（必填）
-      "agentDir": "/root/.openclaw/agents/pm/agent",  // Workspace 目录路径（必填）
+      "workspace": "/root/.openclaw/workspace-pm",    // 该角色工作目录（建议显式配置）
+      "agentDir": "/root/.openclaw/workspace-pm",     // Agent 文件目录（必填，含 8 个标准文件）
       "identity": {
         "name": "项目经理",                      // Agent 显示名称
         "emoji": "📋"                            // Agent 表情头像
@@ -160,7 +161,7 @@
 | 字段 | 必填 | 说明                                   |
 |--|--|--------------------------------------|
 | `id` | ✅ | 全局唯一标识，用于绑定、路由、相互调用                  |
-| `agentDir` | ✅ | 指向该 Agent 的 Workspace 目录（含 8 个标准文件）  |
+| `agentDir` | ✅ | 指向该 Agent 文件目录（含 8 个标准文件），推荐与 `workspace` 一致 |
 | `name` | ❌ | Agent 名称，可覆盖 IDENTITY.md 中的名称        |
 | `workspace` | ❌ | 覆盖默认工作目录，适合让不同 Agent 操作不同文件空间        |
 | `identity.name` | ❌ | 群聊中显示的名字                             |
@@ -379,7 +380,8 @@ qa    → 可调用 → rd / pm
     "list": [
       {
         "id": "pm",
-        "agentDir": "/root/.openclaw/agents/pm/agent",
+        "workspace": "/root/.openclaw/workspace-pm",
+        "agentDir": "/root/.openclaw/workspace-pm",
         "identity": { "name": "项目经理", "emoji": "🧩" },
         "groupChat": {
           "mentionPatterns": ["@项目经理", "项目经理", "@产品经理", "产品经理", "pm"]
@@ -389,7 +391,7 @@ qa    → 可调用 → rd / pm
       {
         "id": "rd",
         "workspace": "/root/.openclaw/workspace-rd",
-        "agentDir": "/root/.openclaw/agents/rd/agent",
+        "agentDir": "/root/.openclaw/workspace-rd",
         "identity": { "name": "工程师", "emoji": "💻" },
         "groupChat": {
           "mentionPatterns": ["@工程师", "工程师", "rd", "码农"]
@@ -398,7 +400,8 @@ qa    → 可调用 → rd / pm
       },
       {
         "id": "qa",
-        "agentDir": "/root/.openclaw/agents/qa/agent",
+        "workspace": "/root/.openclaw/workspace-qa",
+        "agentDir": "/root/.openclaw/workspace-qa",
         "identity": { "name": "测试工程师", "emoji": "🔍" },
         "groupChat": {
           "mentionPatterns": ["@测试", "测试工程师", "qa"]
@@ -407,7 +410,8 @@ qa    → 可调用 → rd / pm
       },
       {
         "id": "ce",
-        "agentDir": "/root/.openclaw/agents/ce/agent",
+        "workspace": "/root/.openclaw/workspace-ce",
+        "agentDir": "/root/.openclaw/workspace-ce",
         "identity": { "name": "小美", "emoji": "🌸" },
         "groupChat": {
           "mentionPatterns": ["@小美", "小美", "ce", "鼓励师"]

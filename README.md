@@ -28,10 +28,10 @@
 
 ## Agent Workspace 结构
 
-每个 Agent 目录当前包含 8 个文件：
+仓库中的每个 Agent 目录（如 `agents/pm/`）当前都包含 8 个标准文件：
 
 ```text
-agent/
+agents/<role>/
 ├── AGENTS.md
 ├── BOOTSTRAP.md
 ├── HEARTBEAT.md
@@ -40,6 +40,15 @@ agent/
 ├── SOUL.md
 ├── TOOLS.md
 └── USER.md
+```
+
+部署映射（与 `docs/openclaw.json` 一致）：
+
+```text
+repo/agents/pm/* -> ~/.openclaw/workspace-pm/
+repo/agents/rd/* -> ~/.openclaw/workspace-rd/
+repo/agents/qa/* -> ~/.openclaw/workspace-qa/
+repo/agents/ce/* -> ~/.openclaw/workspace-ce/
 ```
 
 说明：
