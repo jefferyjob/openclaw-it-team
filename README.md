@@ -86,22 +86,35 @@ CE 在各阶段主动发言，处理鼓励、安抚和庆祝场景。
 - 阻塞和延期必须抄送 `pm`
 - 用户焦虑或团队高压场景应抄送 `ce`
 
-## 快速开始
+## ✨ 快速体验
 
-### 1. 克隆仓库
+### 方式一：让龙虾帮你部署（推荐给 OpenClaw 用户）
+如果你正在使用 OpenClaw，直接把下面这句话发给你的龙虾：
+```text
+请按照这个 SKILL.md 帮我完成 openclaw-it-team 的部署：
+https://github.com/jefferyjob/openclaw-it-team/blob/main/SKILL.md
+```
 
+**⚠️ 特别注意：**
+- 如果你不是 **OpenClaw** 用户，建议直接使用 **方式二** 进行部署，步骤更简单。
+- 完成部署后，需要**手动修改 `openclaw.json` 配置文件**，填入你自己的 **飞书 `AppId` 和 `AppSecret`** 才能正常使用。
+- 同时请记得为 **飞书 Bot** 配置对应的 **应用权限**，否则机器人可能无法正常工作。
+
+
+### 方式二：手动部署
+#### 1. 克隆仓库
 ```bash
 git clone https://github.com/jefferyjob/openclaw-it-team.git
 cd openclaw-it-team
 ```
 
-### 2. 查看最终方案
+#### 2. 查看最终方案
 - 全团队流程
 - 统一群内播报协议
 - 各个 Agent 的完整 Workspace 定义
 - 异常处理规则
 
-### 3. 查看各角色实际配置
+#### 3. 查看各角色实际配置
 
 ```text
 agents/
@@ -119,7 +132,7 @@ agents/
 - [`agents/qa/SOUL.md`](agents/qa/SOUL.md)
 - [`agents/ce/USER.md`](agents/ce/USER.md)
 
-### 4. 从 PM 启动一次完整流转
+### 快速体验：从 PM 启动一次完整流转
 
 典型起点是由用户向 `pm` 提需求，例如：
 
