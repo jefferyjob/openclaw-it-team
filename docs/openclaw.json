@@ -58,11 +58,7 @@
         },
         "groupChat": {
           "mentionPatterns": [
-            "@项目经理",
-            "项目经理",
-            "@产品经理",
-            "产品经理",
-            "pm"
+            "@项目经理"
           ]
         },
         "subagents": {
@@ -79,10 +75,7 @@
         },
         "groupChat": {
           "mentionPatterns": [
-            "@工程师",
-            "工程师",
-            "rd",
-            "码农"
+            "@工程师"
           ]
         },
         "subagents": {
@@ -94,14 +87,12 @@
         "workspace": "/root/.openclaw/workspace-qa",
         "agentDir": "/root/.openclaw/workspace-qa",
         "identity": {
-          "name": "测试工程师",
+          "name": "QA",
           "emoji": "🔍"
         },
         "groupChat": {
           "mentionPatterns": [
-            "@测试",
-            "测试工程师",
-            "qa"
+            "@QA"
           ]
         },
         "subagents": {
@@ -118,10 +109,7 @@
         },
         "groupChat": {
           "mentionPatterns": [
-            "@小美",
-            "小美",
-            "ce",
-            "鼓励师"
+            "@小美"
           ]
         },
         "subagents": {

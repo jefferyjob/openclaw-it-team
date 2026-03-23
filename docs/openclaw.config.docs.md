@@ -141,11 +141,7 @@
       },
       "groupChat": {
         "mentionPatterns": [                     // 群聊中触发该 Agent 的关键词
-          "@项目经理",
-          "项目经理",
-          "@产品经理",
-          "产品经理",
-          "pm"
+          "@项目经理"
         ]
       },
       "subagents": {
@@ -384,7 +380,7 @@ qa    → 可调用 → rd / pm
         "agentDir": "/root/.openclaw/workspace-pm",
         "identity": { "name": "项目经理", "emoji": "🧩" },
         "groupChat": {
-          "mentionPatterns": ["@项目经理", "项目经理", "@产品经理", "产品经理", "pm"]
+          "mentionPatterns": ["@项目经理"]
         },
         "subagents": { "allowAgents": ["rd", "qa", "ce"] }
       },
@@ -394,7 +390,7 @@ qa    → 可调用 → rd / pm
         "agentDir": "/root/.openclaw/workspace-rd",
         "identity": { "name": "工程师", "emoji": "💻" },
         "groupChat": {
-          "mentionPatterns": ["@工程师", "工程师", "rd", "码农"]
+          "mentionPatterns": ["@工程师"]
         },
         "subagents": { "allowAgents": ["pm"] }
       },
@@ -402,9 +398,9 @@ qa    → 可调用 → rd / pm
         "id": "qa",
         "workspace": "/root/.openclaw/workspace-qa",
         "agentDir": "/root/.openclaw/workspace-qa",
-        "identity": { "name": "测试工程师", "emoji": "🔍" },
+        "identity": { "name": "QA", "emoji": "🔍" },
         "groupChat": {
-          "mentionPatterns": ["@测试", "测试工程师", "qa"]
+          "mentionPatterns": ["@QA"]
         },
         "subagents": { "allowAgents": ["pm", "rd"] }
       },
@@ -414,7 +410,7 @@ qa    → 可调用 → rd / pm
         "agentDir": "/root/.openclaw/workspace-ce",
         "identity": { "name": "小美", "emoji": "🌸" },
         "groupChat": {
-          "mentionPatterns": ["@小美", "小美", "ce", "鼓励师"]
+          "mentionPatterns": ["@小美"]
         },
         "subagents": { "allowAgents": ["pm", "rd", "qa"] }
       }
