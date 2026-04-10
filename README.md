@@ -5,41 +5,42 @@
 </p>
 
 <p align="center">
-   用多 Agent 方式模拟一个完整 IT 团队，把 <strong>需求 → 开发 → 测试 → 交付</strong>，全程自动流转。
+  Simulate a complete IT team with a multi-agent workflow, automatically driving the full process from <strong>requirements → development → testing → delivery</strong>.
 </p>
 
-## 项目简介
-🦞OpenClaw IT Team 是一套面向软件研发场景的多智能体协作配置。这套配置的目标不是“让 Agent 并排回答问题”，而是让它们像真实团队一样按职责流转、相互交接、在群内持续同步进度。
+English | [简体中文](README.cn.md)
 
-## ✨ 快速体验
+## Project Overview
+🦞OpenClaw IT Team is a multi-agent collaboration setup designed for software development scenarios. Its goal is not to have agents answer questions side by side, but to let them operate like a real team: hand off work by role, collaborate across stages, and continuously sync progress in a shared group.
 
-### 方式一：让龙虾帮你部署（推荐给 OpenClaw 用户）
-如果你正在使用 OpenClaw，直接把下面这句话发给你的龙虾：
+## ✨ Quick Start
+
+### Option 1: Let Lobster deploy it for you (recommended for OpenClaw users)
+If you are already using OpenClaw, just send the following message to your Lobster:
 ```text
-请按照这个 SKILL.md 帮我完成 openclaw-it-team 的部署：
+Please help me deploy openclaw-it-team according to this SKILL.md:
 https://github.com/jefferyjob/openclaw-it-team/blob/main/SKILL.md
 ```
 
-**⚠️ 特别注意：**
-- 如果你不是 **OpenClaw** 用户，建议直接使用 **方式二** 进行部署，步骤更简单。
-- 完成部署后，需要**手动修改 `openclaw.json` 配置文件**，填入你自己的 **飞书 `AppId` 和 `AppSecret`** 才能正常使用。
-- 同时请记得为 **飞书 Bot** 配置对应的 **应用权限**，否则机器人可能无法正常工作。
+**⚠️ Important:**
+- If you are **not** an **OpenClaw** user, it is recommended to use **Option 2** directly because the steps are simpler.
+- After deployment, you need to **manually edit the `openclaw.json` configuration file** and fill in your own **Feishu `AppId` and `AppSecret`** before it can work properly.
+- Also make sure your **Feishu Bot** has the required **application permissions**, otherwise the bot may not function correctly.
 
-
-### 方式二：手动部署
-#### 1. 克隆仓库
+### Option 2: Manual deployment
+#### 1. Clone the repository
 ```bash
 git clone https://github.com/jefferyjob/openclaw-it-team.git
 cd openclaw-it-team
 ```
 
-#### 2. 查看最终方案
-- 全团队流程
-- 统一群内播报协议
-- 各个 Agent 的完整 Workspace 定义
-- 异常处理规则
+#### 2. Review the final solution
+- Full team workflow
+- Unified group broadcast protocol
+- Complete Workspace definitions for each Agent
+- Exception handling rules
 
-#### 3. 查看各角色实际配置
+#### 3. Review the actual configuration for each role
 
 ```text
 agents/
@@ -49,7 +50,7 @@ agents/
 └── ce/
 ```
 
-例如：
+For example:
 
 - [`agents/pm/IDENTITY.md`](agents/pm/IDENTITY.md)
 - [`agents/pm/AGENTS.md`](agents/pm/AGENTS.md)
@@ -57,42 +58,42 @@ agents/
 - [`agents/qa/SOUL.md`](agents/qa/SOUL.md)
 - [`agents/ce/USER.md`](agents/ce/USER.md)
 
-### 快速体验：从 PM 启动一次完整流转
+### Quick experience: start a complete workflow from PM
 
-典型起点是由用户向 `pm` 提需求，例如：
-
-```text
-我需要一个用户登录功能，支持手机号验证码登录。
-```
-
-之后的标准流转是：
+A typical entry point is that the user gives a requirement to `pm`, for example:
 
 ```text
-PM -> 输出 PRD 和计划
-RD -> 开发并提测
-QA -> 测试并反馈
-PM -> 结项并同步用户
-CE -> 全程氛围协同
+I need a user login feature that supports SMS verification code login.
 ```
 
-## 核心特点
-- 单一负责人：`PM` 统一负责需求和项目推进，减少角色切换成本。
-- 流程闭环：标准流程固定为 `PM -> RD -> QA`，测试不通过则回到 RD 修复，由 PM 推动闭环。
-- 全程可见：所有角色都要求在开始、过程、结束三个阶段群内播报。
-- 文档驱动：每个 Agent 通过标准 Workspace 文件定义身份、路由、工具和交互方式。
-- 情绪协同：`CE` 全程监听，帮助用户和团队维持稳定沟通节奏。
+The standard workflow after that is:
 
-## 推荐阅读顺序
-如果你第一次接触这个仓库，建议按这个顺序阅读：
+```text
+PM -> outputs PRD and plan
+RD -> develops and submits for testing
+QA -> tests and gives feedback
+PM -> closes the project and syncs with the user
+CE -> supports the atmosphere throughout the process
+```
+
+## Core Features
+- Single owner: `PM` is fully responsible for requirements and project delivery, reducing the cost of role switching.
+- Closed-loop workflow: the standard process is fixed as `PM -> RD -> QA`. If testing fails, work returns to RD for fixes, and PM drives the loop to closure.
+- Full visibility: all roles are required to post updates to the group at the start, during progress, and at completion.
+- Document-driven: each Agent is defined through standard Workspace files covering identity, routing, tools, and interaction rules.
+- Emotional coordination: `CE` listens throughout the process and helps users and the team maintain a stable communication rhythm.
+
+## Recommended Reading Order
+If this is your first time exploring this repository, it is recommended to read in this order:
 
 1. [`docs/openclaw.config.docs.md`](docs/openclaw.config.docs.md)
-   OpenClaw 的配置说明，适合理解底层接入方式。
+   OpenClaw configuration documentation, useful for understanding the underlying integration approach.
 2. `agents/*`
-   每个角色的实际 Workspace 文件。
+   The actual Workspace files for each role.
 
-## Agent Workspace 结构
+## Agent Workspace Structure
 
-仓库中的每个 Agent 目录（如 `agents/pm/`）当前都包含 8 个标准文件：
+Each Agent directory in the repository (such as `agents/pm/`) currently contains 8 standard files:
 
 ```text
 agents/<role>/
@@ -106,7 +107,7 @@ agents/<role>/
 └── USER.md
 ```
 
-部署映射（与 `docs/openclaw.json` 一致）：
+Deployment mapping (consistent with `docs/openclaw.json`):
 
 ```text
 repo/agents/pm/* -> ~/.openclaw/workspace-pm/
@@ -115,49 +116,49 @@ repo/agents/qa/* -> ~/.openclaw/workspace-qa/
 repo/agents/ce/* -> ~/.openclaw/workspace-ce/
 ```
 
-说明：
-- `IDENTITY.md`：角色身份、职责、上下游、输出物、禁止行为
-- `SOUL.md`：角色思维模型、流程规则、群播报格式
-- `AGENTS.md`：任务来源、可转发对象、消息结构
-- `BOOTSTRAP.md`：启动初始化步骤和工作区文件
-- `HEARTBEAT.md`：定时巡检、异常触发和兜底动作
-- `TOOLS.md`：该角色可用的物理抓手和使用规则
-- `USER.md`：用户或群聊中的触发词与响应规则
-- `MEMORY.md`：长期约定、术语、历史经验、协作提醒
+Description:
+- `IDENTITY.md`: role identity, responsibilities, upstream/downstream, deliverables, and prohibited behaviors
+- `SOUL.md`: role mindset, workflow rules, and group broadcast format
+- `AGENTS.md`: task sources, forwarding targets, and message structure
+- `BOOTSTRAP.md`: startup initialization steps and workspace files
+- `HEARTBEAT.md`: scheduled inspection, exception triggers, and fallback actions
+- `TOOLS.md`: the physical tools available to the role and usage rules
+- `USER.md`: trigger phrases and response rules from users or group chats
+- `MEMORY.md`: long-term agreements, terminology, historical experience, and collaboration reminders
 
-## Agent 角色说明
+## Agent Roles
 
-| Agent | 角色 | 主要职责 | 关键输出 |
+| Agent | Role | Main Responsibilities | Key Outputs |
 |------|------|---------|---------|
-| 🧩 PM | 项目经理 | 需求澄清、PRD、排期、任务分配、风险管理、结项 | `PRD.md`、`TASK_BOARD.md`、`RISK_LOG.md`、交付状态 |
-| 💻 RD | 工程师 | 技术设计、编码实现、自测、修复 Bug | 代码、技术方案、自测记录 |
-| 🔍 QA | 测试工程师 | 功能测试、回归测试、质量把关 | 测试报告、Bug 列表 |
-| 🌸 CE | 鼓励师 | 安抚用户、调节氛围、缓解压力 | 群内氛围播报、情绪提醒 |
+| 🧩 PM | Project Manager | Requirement clarification, PRD, scheduling, task assignment, risk management, project closure | `PRD.md`, `TASK_BOARD.md`, `RISK_LOG.md`, delivery status |
+| 💻 RD | Engineer | Technical design, implementation, self-testing, bug fixing | Code, technical solution, self-test records |
+| 🔍 QA | Test Engineer | Functional testing, regression testing, quality assurance | Test reports, bug list |
+| 🌸 CE | Cheerleader | Comfort users, regulate atmosphere, relieve pressure | Group atmosphere updates, emotional reminders |
 
-## 标准工作流程
+## Standard Workflow
 
 ```text
-用户提出需求
+User submits a requirement
   ->
-PM 澄清需求、输出 PRD、制定计划、分配任务
+PM clarifies requirements, produces PRD, makes a plan, and assigns tasks
   ->
-RD 开发、自测、提测
+RD develops, self-tests, and submits for testing
   ->
-QA 测试
-  -> 通过：PM 宣布完成并同步用户
-  -> 不通过：QA 提 Bug -> RD 修复 -> QA 回归
+QA tests
+  -> Pass: PM announces completion and syncs with the user
+  -> Fail: QA reports bugs -> RD fixes -> QA regresses
 
-CE 在各阶段主动发言，处理鼓励、安抚和庆祝场景。
+CE actively speaks at each stage to encourage, comfort, and celebrate when appropriate.
 ```
 
-## 群内协作规则
-这是当前仓库最重要的协作约束之一：
+## Group Collaboration Rules
+This is one of the most important collaboration constraints in the current repository:
 
-- 每个 Agent 开始任务时必须播报
-- 关键进展或阻塞时必须播报
-- 任务结束或移交时必须播报
-- 阻塞和延期必须抄送 `pm`
-- 用户焦虑或团队高压场景应抄送 `ce`
+- Each Agent must announce when starting a task
+- Each Agent must announce key progress or blockers
+- Each Agent must announce when finishing or handing off a task
+- Blockers and delays must copy `pm`
+- User anxiety or high-pressure team situations should copy `ce`
 
 ## License
 MIT License
